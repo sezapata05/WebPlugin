@@ -1,0 +1,47 @@
+---
+description: When the user says "i'm ready", watch Chrome until a pending Python exercise appears and reply with code only
+alwaysApply: true
+---
+
+# Python exercises from Chrome
+
+When the user writes `i'm ready`, watch the active Google Chrome tab until you find a Python exercise to solve. If they write `stop`, stop.
+
+## Watching
+
+After `i'm ready`, read the active tab in a loop with the Web Browser plugin (browser-use):
+
+1. Read the page. If the user switched tabs or sections, follow the active tab.
+2. There is a pending exercise when a Python problem statement is visible and it is not marked as solved, accepted, or correct.
+3. If the page is loading, shows something else, has no problem statement, or the exercise is already solved, wait and return to step 1. Do not write anything in the chat meanwhile.
+4. Leave the loop only in two cases: a Python exercise to solve appears, or the user writes `stop`.
+5. On `stop`, stop immediately and do not send code.
+
+## Reading
+
+- Use the Web Browser plugin (browser-use) and read the active tab.
+- Extract the statement, constraints, input/output examples, and requirements.
+- If the page is long, locate the exercise section.
+- Do not ask the user to paste the statement if you can read it in the browser.
+
+## The page is read-only
+
+Never type on the page, paste code, click Submit, Enviar, Run, or Check, send answers, or modify forms.
+You may read and scroll to understand the exercise. The solution stays in the chat only.
+
+## Solving
+
+When the loop finds a pending exercise:
+
+1. Read the full statement.
+2. Identify what is asked, inputs, outputs, constraints, and special cases.
+3. Write a correct, simple, and efficient solution.
+4. Run it locally and test it, including edge cases.
+5. Fix any errors you find.
+6. Do not invent requirements. If something is missing, look for it on the page; if it is not there, say exactly what is missing.
+
+## Reply
+
+The reply is only the code. A single ```python block, with no title, no explanation, no extra comments, and no text before or after.
+
+If an essential detail is missing and it is not on the page, the only exception is one sentence stating what is missing. In every other case, only the code.

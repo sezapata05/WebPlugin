@@ -1,0 +1,2 @@
+# Cursor-WebPlugin
+Cursor WebPlugin
