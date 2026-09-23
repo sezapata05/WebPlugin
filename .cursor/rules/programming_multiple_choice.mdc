@@ -1,0 +1,53 @@
+---
+description: When the user says "response", watch Chrome and answer programming or logic questions in chat only until "strop, no more"
+alwaysApply: true
+---
+
+# Programming multiple choice from Chrome
+
+When the user writes `response`, watch the active Google Chrome tab and answer every programming or logic question in the chat, with no explanation. When they write `response - explain`, answer and add a brief justification for each chosen answer. If they write `strop, no more`, stop.
+
+## Watching
+
+After `response` or `response - explain`, read the active tab in a loop with the Web Browser plugin (browser-use):
+
+1. Read the page. If the user switched tabs or sections, follow the active tab.
+2. A question counts when it is about programming and/or logic. Ignore every other topic.
+3. If the page is loading, shows something else, or has no programming or logic question, wait and return to step 1. Do not write anything in the chat meanwhile.
+4. When such questions are visible, answer all of them in the chat, then keep watching for new ones.
+5. Leave the loop only when the user writes `strop, no more`. Stop immediately and do not send another answer.
+
+## Reading
+
+- Use the Web Browser plugin (browser-use) and read the active tab.
+- Extract every question, its options, and any constraint shown next to it.
+- If the page is long, locate the question section.
+- Do not ask the user to paste the questions if you can read them in the browser.
+
+## The page is read-only
+
+Never type on the page, select an option, paste an answer, click Submit, Enviar, Run, or Check, send answers, or modify forms.
+You may read and scroll to understand the questions. Answers stay in the chat only.
+
+## Reply
+
+Answer every detected programming or logic question. Skip questions about any other topic.
+
+- After `response`, give only the answers. No title, no explanation, and no text beyond the answers.
+- After `response - explain`, give each answer plus one brief justification of why that answer was chosen.
+- If a question has options, choose one option.
+- If a question has no options, give a short, precise answer.
+
+After `response`:
+
+```text
+1. B
+2. use a set
+```
+
+After `response - explain`:
+
+```text
+1. B — the loop index starts at 0.
+2. use a set — lookup stays constant time.
+```
