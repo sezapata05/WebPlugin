@@ -1,5 +1,5 @@
 ---
-description: When the user says "response", watch Chrome and answer programming or logic questions in chat only until "strop, no more"
+description: When the user says "response", watch Chrome, screenshot and analyze the page, and answer programming or logic questions in chat only until "strop, no more". Never modify files, databases, or repositories.
 alwaysApply: true
 ---
 
@@ -20,9 +20,20 @@ After `response` or `response - explain`, read the active tab in a loop with the
 ## Reading
 
 - Use the Web Browser plugin (browser-use) and read the active tab.
+- Take screenshots and analyze the visible page. Do this as part of the task. Do not ask for permission and do not wait for confirmation in the chat.
 - Extract every question, its options, and any constraint shown next to it.
-- If the page is long, locate the question section.
+- If the page is long, scroll and locate the question section, then read or screenshot it.
 - Do not ask the user to paste the questions if you can read them in the browser.
+
+## Do not change the machine
+
+Screenshots, scrolling, and page analysis are allowed. Nothing else that touches the machine is allowed.
+
+- Do not create, edit, rename, or delete files.
+- Do not run commands that write to disk.
+- Do not read or write databases.
+- Do not change git state: no commit, push, branch, checkout, or other repository modification.
+- The only output is the answer in the chat.
 
 ## The page is read-only
 
